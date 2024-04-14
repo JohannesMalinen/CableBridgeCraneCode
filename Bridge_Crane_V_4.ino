@@ -53,7 +53,6 @@ float mag;
 
 
 void setup() {
-  //Serial.begin(115200);
   stepperX.setMaxSpeed(max_speed);
   stepperY.setMaxSpeed(max_speed);
   stepperZ.setMaxSpeed(max_speed);
@@ -78,9 +77,9 @@ void blinkLed()
   
   if (buttonState && (millis() - lastDebounceTime) > debounceDelay)
   {
-    locked = !locked;               // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    digitalWrite(lock, locked);     // !!!!!! LOCK CODE HERE !!!!!!
-  }                                 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    locked = !locked;
+    digitalWrite(lock, locked);
+  }
 
   lastDebounceTime = millis();
 
@@ -103,7 +102,7 @@ void loop() {
   float magnitudeLimit = sqrt(x*x + y*y);
 
 
-                    // Set maximum magnitude, x and y to 511
+                    // Set maximum magnitude, x and y to 500
   if (magnitude > 500) {
     magnitude = 500;
   }
@@ -197,16 +196,6 @@ void loop() {
     normal_controls();
 
   }
-                      // Mapping for python visualisation    >>> UNUSED <<<
-  /*
-  x = map(x, -512, 512, -127, 128);
-  y = map(y, -512, 512, -127, 128);
-  Serial.print(x);
-  Serial.print(", ");
-  Serial.println(y)
-  */
-  
-  //Serial.println(v);
 }
 
 
@@ -236,11 +225,6 @@ void lift_lower() {           // Spin motors z-axis
   stepperY.runSpeed();
   stepperZ.runSpeed();
   stepperA.runSpeed();
-}
-
-
-void limit_control() {       // Controls for limit situations
-
 }
 
 
