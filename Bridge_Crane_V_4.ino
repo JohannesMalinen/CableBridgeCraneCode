@@ -237,7 +237,7 @@ void normal_controls() {      // Controls for normal situations in x-y-plane
     angle = pi + (angle + (3*pi)/4);
   }
 
-                              // Get x and y values from controls inside r=511 circle
+                              // Get x and y values from controls inside r=500 circle
   x = magnitude * cos(angle);
   y = magnitude * sin(angle);
 
